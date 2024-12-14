@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Container, Typography, Box, CssBaseline } from '@mui/material';
+import { Button, Box, CssBaseline } from '@mui/material';
 import { FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { IoMoon } from "react-icons/io5";
-import { LuSun } from "react-icons/lu";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Navbar = () => {
@@ -17,50 +15,52 @@ const Navbar = () => {
     },
   });
 
-  // Function to toggle the theme
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
-
   return (
     <ThemeProvider theme={theme}> {/* Apply the theme globally */}
       <CssBaseline /> {/* Normalize styles across browsers */}
       
-      <Container
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between', // Align items to the left and right
-        alignItems: 'center',
-        padding: '10px 20px',
-        borderBottom: '1px solid #ccc',
-      }}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between', // Align items to the left and right
+          alignItems: 'center',
+          padding: '10px 20px',
+          backgroundColor: '#3f51b5', // Navbar background color
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow effect
+          borderRadius: '8px', // Rounded corners
+          width: '100%', // Ensure it spans the full width
+        }}
       >
         {/* Product Store Text */}
-        <Typography variant="h6" style={{ fontWeight: 'bold', color: '#3f51b5',paddingRight: '950px' }}>
+        <Box sx={{ fontWeight: 'bold', color: 'white', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             Product Store
           </Link>
-        </Typography>
+        </Box>
 
         {/* Button Container */}
-        <Box display="flex" alignItems="center" gap="20px">
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           {/* Add Product Button */}
           <Link to="/create" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" color="primary" startIcon={<FaCartPlus />}>
+            <Button 
+              variant="contained" 
+              color="secondary" 
+              startIcon={<FaCartPlus />} 
+              sx={{
+                borderRadius: '30px', // Rounded button
+                textTransform: 'none', // Prevent text from being capitalized
+                padding: '8px 20px',
+                '&:hover': {
+                  backgroundColor: '#f50057', // Hover effect
+                },
+                boxShadow: 'none', // Remove button shadow
+              }}
+            >
               Add Product
             </Button>
           </Link>
-
-          {/* Theme Toggle Button */}
-          <Button
-            variant="outlined"
-            onClick={toggleTheme}
-            style={{ borderRadius: '50%', padding: '10px' }}
-          >
-            {darkMode ? <LuSun style={{ fontSize: '20px', color: '#fbc02d' }} /> : <IoMoon style={{ fontSize: '20px', color: '#3f51b5' }} />}
-          </Button>
         </Box>
-      </Container>
+      </Box>
     </ThemeProvider>
   );
 };

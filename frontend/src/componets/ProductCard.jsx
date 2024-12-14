@@ -46,12 +46,13 @@ const ProductCard = ({ product }) => {
         border: "1px solid #ddd",
         borderRadius: "8px",
         overflow: "hidden",
-        maxWidth: 300,
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
         textAlign: "center",
         margin: "16px auto",
         backgroundColor: "#fff",
-        width: "400px",
+        maxWidth: "400px",
+        width: "100%", // Ensure it takes up full width on smaller screens
+        padding: "16px",
       }}
     >
       {/* Product Image */}
@@ -60,6 +61,7 @@ const ProductCard = ({ product }) => {
           height: "200px",
           overflow: "hidden",
           backgroundColor: "#f9f9f9",
+          width: "100%", // Ensure the image takes full width
         }}
       >
         <img
@@ -116,6 +118,7 @@ const ProductCard = ({ product }) => {
             borderRadius: "8px",
             boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
             width: "300px",
+            maxWidth: "90%", // Make the modal responsive on smaller screens
           }}
         >
           <Typography variant="h6" gutterBottom>
