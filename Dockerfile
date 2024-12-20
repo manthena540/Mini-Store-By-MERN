@@ -12,7 +12,7 @@ RUN npm install --silent
 COPY backend ./backend
 
 # Copy the .env file
-COPY .env ./
+COPY . .
 
 # Build the frontend
 WORKDIR /usr/src/app/frontend
